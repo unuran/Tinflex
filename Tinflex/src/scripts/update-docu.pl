@@ -1,6 +1,13 @@
 #! /usr/bin/perl
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# Run this script in the top-level Runuran directory.
+# The script updates version and date in
+#   DESCRIPTION
+#   man/Tinflex-package.Rd
+# ---------------------------------------------------------------------------
+
 use strict;
 use Getopt::Std;
 
