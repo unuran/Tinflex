@@ -48,8 +48,8 @@ Tinflex.setup.C(lpdf, dlpdf, d2lpdf=NULL, ib, cT=0, rho=1.1, max.intervals=1001)
   The algorithm uses family
   \ifelse{html}{\out{<i>T<sub>c</sub></i>}}{\eqn{T_c}}
   of transformations, where
+
   \ifelse{html}{\out{
-      <p>
       <table>
       <tr>
       <td><i>T<sub>0</sub> = </i>log<i>(x)</i>
@@ -57,9 +57,7 @@ Tinflex.setup.C(lpdf, dlpdf, d2lpdf=NULL, ib, cT=0, rho=1.1, max.intervals=1001)
       <tr>
       <td><i>T<sub>c</sub> = </i>sign<i>(x) x<sup>c</sup></i>
       <td><td>for <i>c!=0</i> </tr>
-      </table>
-      </p>}
-  }{%
+      </table>}}{%
     \deqn{T_c(x) = \left\{\begin{array}{l@{\quad}l}%
       \log(x) & \mbox{for $c=0\,,$}\\
       \mbox{sign}(c)\; x^c & \mbox{for $c\not=0\,.$}
@@ -67,7 +65,7 @@ Tinflex.setup.C(lpdf, dlpdf, d2lpdf=NULL, ib, cT=0, rho=1.1, max.intervals=1001)
       T_0(x) = log(x)       for c=0,
       T_c(x) = sign(c) x^c  for c!=0.}
   }
-
+  
   Parameter \eqn{c} is given by argument \code{cT}.
   
   The algorithm requires the following input from the user:
