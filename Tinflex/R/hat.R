@@ -48,14 +48,14 @@ type.iv <- function(left, right) {
   
   ## Case: Unbounded domain.
   if ( is.infinite(left["x"])) {
-    if (is.TRUE(right["d2Tfx"] < 0 && right["dTfx"] >= 0))
+    if (isTRUE(right["d2Tfx"] < 0 && right["dTfx"] >= 0))
       return (IVa)
     else
       return (0)
   }
 
   if ( is.infinite(right["x"])) {
-    if (is.TRUE(left["d2Tfx"] < 0 && left["dTfx"] <= 0))
+    if (isTRUE(left["d2Tfx"] < 0 && left["dTfx"] <= 0))
       return (IVa)
     else
       return (0)
@@ -63,21 +63,21 @@ type.iv <- function(left, right) {
 
   ## Case: Interval where the density vanishes at boundary
   ##       (and thus the log-density is -Inf).
-  if ((is.TRUE(cT>0)  && identical(as.numeric(left["Tfx"]),0))    ||
-      (is.TRUE(cT<=0) && identical(as.numeric(left["Tfx"]),-Inf)) ) {
-    if (is.TRUE(right["d2Tfx"] < 0 && right["dTfx"] >= 0))
+  if ((isTRUE(cT>0)  && identical(as.numeric(left["Tfx"]),0))    ||
+      (isTRUE(cT<=0) && identical(as.numeric(left["Tfx"]),-Inf)) ) {
+    if (isTRUE(right["d2Tfx"] < 0 && right["dTfx"] >= 0))
       return (IVa)
-    if (is.TRUE(right["d2Tfx"] > 0 && right["dTfx"] >= 0))
+    if (isTRUE(right["d2Tfx"] > 0 && right["dTfx"] >= 0))
       return (IVb)
     else
       return (0)
   }
 
-  if ((is.TRUE(cT>0)  && identical(as.numeric(right["Tfx"]),0))    ||
-      (is.TRUE(cT<=0) && identical(as.numeric(right["Tfx"]),-Inf)) ) {
-    if (is.TRUE(left["d2Tfx"] < 0 && left["dTfx"] <= 0))
+  if ((isTRUE(cT>0)  && identical(as.numeric(right["Tfx"]),0))    ||
+      (isTRUE(cT<=0) && identical(as.numeric(right["Tfx"]),-Inf)) ) {
+    if (isTRUE(left["d2Tfx"] < 0 && left["dTfx"] <= 0))
       return (IVa)
-    if (is.TRUE(left["d2Tfx"] > 0 && left["dTfx"] <= 0))
+    if (isTRUE(left["d2Tfx"] > 0 && left["dTfx"] <= 0))
       return (IVb)
     else
       return (0)
@@ -85,7 +85,7 @@ type.iv <- function(left, right) {
 
   ## Case: Domains where the density has a pole at boundary
   ##       (and thus the transformed density equals 0 for c<0).
-  if (is.TRUE(cT<0)) {
+  if (isTRUE(cT<0)) {
     if ((identical(as.numeric(left["Tfx"]),0)  && right["d2Tfx"] > 0) ||
         (identical(as.numeric(right["Tfx"]),0) && left["d2Tfx"] > 0)  )
       return (IVb)
@@ -95,31 +95,31 @@ type.iv <- function(left, right) {
   R <- (right["Tfx"] - left["Tfx"]) / (right["x"] - left["x"])
 
   ## Check for all other possible cases.
-  if (is.TRUE(left["dTfx"] >= R && right["dTfx"] >= R))
+  if (isTRUE(left["dTfx"] >= R && right["dTfx"] >= R))
     return (Ia)
 
-  if (is.TRUE(left["dTfx"] <= R && right["dTfx"] <= R))
+  if (isTRUE(left["dTfx"] <= R && right["dTfx"] <= R))
     return (Ib)
 
-  if (is.TRUE(left["d2Tfx"] < 0 && right["d2Tfx"] < 0))
+  if (isTRUE(left["d2Tfx"] < 0 && right["d2Tfx"] < 0))
     return (IVa)
 
-  if (is.TRUE(left["d2Tfx"] > 0 && right["d2Tfx"] > 0))
+  if (isTRUE(left["d2Tfx"] > 0 && right["d2Tfx"] > 0))
     return (IVb)
 
-  if (is.TRUE(left["d2Tfx"] < 0 || right["d2Tfx"] > 0)) {
-    if (is.TRUE(left["dTfx"] >= R && R >= right["dTfx"]))
+  if (isTRUE(left["d2Tfx"] < 0 || right["d2Tfx"] > 0)) {
+    if (isTRUE(left["dTfx"] >= R && R >= right["dTfx"]))
       return (IIa)
 
-    if (is.TRUE(left["dTfx"] <= R && R <= right["dTfx"]))
+    if (isTRUE(left["dTfx"] <= R && R <= right["dTfx"]))
       return (IIIa)
   }
 
-  if (is.TRUE(left["d2Tfx"] > 0 || right["d2Tfx"] < 0)) {
-    if (is.TRUE(left["dTfx"] >= R && R >= right["dTfx"]))
+  if (isTRUE(left["d2Tfx"] > 0 || right["d2Tfx"] < 0)) {
+    if (isTRUE(left["dTfx"] >= R && R >= right["dTfx"]))
       return (IIb)
 
-    if (is.TRUE(left["dTfx"] <= R && R <= right["dTfx"]))
+    if (isTRUE(left["dTfx"] <= R && R <= right["dTfx"]))
       return (IIIb)
   }
 
@@ -148,7 +148,7 @@ hat.iv <- function(left, right, link) {
   left["next"] <- link
 
   ## Check for interval of length 0.
-  if (is.TRUE( identical(left["x"],right["x"]) )) {
+  if (isTRUE( identical(left["x"],right["x"]) )) {
     left[c("ht.a","ht.b","ht.y")] <- c(left["Tfx"], 0, left["x"])
     left[c("sq.a","sq.b","sq.y")] <- c(left["Tfx"], 0, left["x"])
     left["A.ht"] <- 0
@@ -166,7 +166,7 @@ hat.iv <- function(left, right, link) {
   
   ## Compute secant.
   R <- (right["Tfx"] - left["Tfx"]) / (right["x"] - left["x"])
-  if (is.TRUE(left["Tfx"] >= right["Tfx"])) {
+  if (isTRUE(left["Tfx"] >= right["Tfx"])) {
     sc <- c( left["Tfx"], R, left["x"])
   }
   else {
@@ -210,13 +210,13 @@ hat.iv <- function(left, right, link) {
   }
   else if (identical(type, IVb)) {
     left[c("ht.a","ht.b","ht.y")] <- sc
-    if (is.TRUE(left["Tfx"] > right["Tfx"]))
+    if (isTRUE(left["Tfx"] > right["Tfx"]))
       left[c("sq.a","sq.b","sq.y")] <- tr
     else
       left[c("sq.a","sq.b","sq.y")] <- tl
   }
   else if (identical(type, IVa)) {
-    if (is.TRUE(left["Tfx"] > right["Tfx"]))
+    if (isTRUE(left["Tfx"] > right["Tfx"]))
       left[c("ht.a","ht.b","ht.y")] <- tl
     else
       left[c("ht.a","ht.b","ht.y")] <- tr
@@ -300,7 +300,7 @@ do.area <- function(cT, a,b,y, from,to) {
   ## Test where the tangent is constructed:
   ##   s = +1 if tangent is constructed on lower boundary of interval;
   ##       -1 if tangent is constructed on upper boundary of interval.
-  s <- if (is.TRUE((to-y)>(y-from))) 1 else -1
+  s <- if (isTRUE((to-y)>(y-from))) 1 else -1
 
   ## Generally we have
   ##   area <- (FT(cT, a+b*(to-y)) - FT(cT, a+b*(from-y))) / b
@@ -311,7 +311,7 @@ do.area <- function(cT, a,b,y, from,to) {
     ## Case: T(x)=log(x)
 
     z <- s * b*(to-from)
-    if (is.TRUE(abs(z) > 1.e-6)) {
+    if (isTRUE(abs(z) > 1.e-6)) {
       area <- (exp(a+b*(to-y)) - exp(a+b*(from-y))) / b
     } else {
       ## We need approximation by Taylor polynomial to avoid
@@ -325,8 +325,8 @@ do.area <- function(cT, a,b,y, from,to) {
     
   ## The tangent to the transformed density must not vanish.
   ## Otherwise, we cannot construct the hat function.
-  if (!is.TRUE(sign(cT)*(a+b*(from-y)) >= 0) ||
-      !is.TRUE(sign(cT)*(a+b*(to-y))   >= 0) ) {
+  if (!isTRUE(sign(cT)*(a+b*(from-y)) >= 0) ||
+      !isTRUE(sign(cT)*(a+b*(to-y))   >= 0) ) {
       ## Case: numerical errors
       if (is.infinite(a) && a < 0) {
           ## underflow in computing Tf(x) (resulting in -Inf)
@@ -334,7 +334,7 @@ do.area <- function(cT, a,b,y, from,to) {
           return (0)
       }
       ## else:
-      if (is.TRUE(a < 1e250 && is.infinite(b))) {
+      if (isTRUE(a < 1e250 && is.infinite(b))) {
           ## close to underflow when computing Tf(x) and overflow of tangent
           ## we assume that the area is 0
           return (0)
@@ -349,7 +349,7 @@ do.area <- function(cT, a,b,y, from,to) {
   if (identical(cT, -0.5)) {
     ## Case: T(x) = -1/sqrt(x)
 
-    if (is.TRUE(abs(z) > 0.5)) {
+    if (isTRUE(abs(z) > 0.5)) {
       area <- (-1/(a+b*(to-y)) + 1/(a+b*(from-y))) / b
     } else {
       area <- 1/(a*a) * (to-from) / (1 + z)
@@ -360,7 +360,7 @@ do.area <- function(cT, a,b,y, from,to) {
   if (identical(cT, -1)) {
     ## Case: T(x) = -1/x
 
-    if (is.TRUE(abs(z) > 1.e-6)) {
+    if (isTRUE(abs(z) > 1.e-6)) {
       area <- (-log(-a-b*(to-y)) + log(-a-b*(from-y))) / b
     } else {
       ## Approximation by Taylor polynomial.
@@ -380,7 +380,7 @@ do.area <- function(cT, a,b,y, from,to) {
   ## For all other cases we only use a rough approximation in
   ## case of numerical errors.
   
-  if (is.TRUE(abs(b)>1e-10)) {
+  if (isTRUE(abs(b)>1e-10)) {
     area <- (FT(cT, a+b*(to-y)) - FT(cT, a+b*(from-y))) / b
   } else {
     area <- Tinv(cT, a) * (to-from)

@@ -98,7 +98,7 @@ Tinflex.sample.R <- function(gen, n=1) {
         ## Case: T(x)=log(x)
         
         z <- U * b / exp(a+b*(x0-y))
-        if (is.TRUE(abs(z) > 1.e-6)) {
+        if (isTRUE(abs(z) > 1.e-6)) {
           X <- y + (log(exp(a + b*(x0-y))+b*U)-a)/b
           ## or for |z| < Inf:
           ##  X <- x0 + U / exp(a+b*(x0-y)) * 1/z * log(1+z)
@@ -113,7 +113,7 @@ Tinflex.sample.R <- function(gen, n=1) {
         ## Case: T(x) = -1/sqrt(x)
 
         z <- U * b * (a+b*(x0-y))
-        if (is.TRUE(abs(z) > 1.e-6)) {
+        if (isTRUE(abs(z) > 1.e-6)) {
           X <- y + (FTinv(cT, FT(cT, a + b*(x0-y))+b*U)-a)/b
         } else {
           X <- x0 + U * (a+b*(x0-y))^2 * (1 + z + z*z)
@@ -124,7 +124,7 @@ Tinflex.sample.R <- function(gen, n=1) {
         ## Case: T(x) = x
 
         z <- U * b / (a+b*(x0-y))^2
-        if (is.TRUE(abs(z) > 1.e-6)) {
+        if (isTRUE(abs(z) > 1.e-6)) {
           X <- y + (FTinv(cT, FT(cT, a + b*(x0-y))+b*U)-a)/b
         } else {
           X <- x0 + U / (a+b*(x0-y)) * (1 - z/2 + z*z/2)
@@ -135,7 +135,7 @@ Tinflex.sample.R <- function(gen, n=1) {
         ## Case: T(x)=sign(c)*x^c
         ## For all other cases we only use a rough approximation in
         ## case of numerical errors.
-        if (is.TRUE(abs(b)>1e-10)) {
+        if (isTRUE(abs(b)>1e-10)) {
           X <- y + (FTinv(cT, FT(cT, a + b*(x0-y))+b*U)-a)/b
         } else {
           U <- U / ivs["A.ht",i]

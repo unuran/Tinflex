@@ -6,12 +6,6 @@
 
 ## --------------------------------------------------------------------------
 
-## The implementation of R's built-in function isTRUE() is annoying.
-## Thus we define our own.
-is.TRUE <- function(x) { identical(TRUE, as.logical(x)) }
-
-## --------------------------------------------------------------------------
-
 arc.mean <- function(x,y) {
   ## ------------------------------------------------------------------------
   ## Compute "arc-mean" of two points.

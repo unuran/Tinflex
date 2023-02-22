@@ -171,7 +171,7 @@ Tinflex.setup <- function(lpdf, dlpdf, d2lpdf, ib, cT=0, rho=1.1, max.intervals=
 
   ## We have to split intervals where the area
   ## between hat and squueze is too large.
-  while (! is.TRUE(is.TRUE(A.ht.tot / A.sq.tot <= rho))) {
+  while (! isTRUE(A.ht.tot / A.sq.tot <= rho)) {
 
     ## Compute average area.
     threshold <- 0.99 * (A.ht.tot - A.sq.tot) / n.ivs
@@ -216,7 +216,7 @@ Tinflex.setup <- function(lpdf, dlpdf, d2lpdf, ib, cT=0, rho=1.1, max.intervals=
       stop ("Cannot create hat function. A_hat is not finite: A_hat=", A.ht.tot)
   } 
     
-  if (! is.TRUE(A.ht.tot > 0.)) {
+  if (! isTRUE(A.ht.tot > 0.)) {
       stop ("Cannot create hat function. A_hat is not > 0: A_hat=", A.ht.tot)
   } 
 
@@ -224,14 +224,14 @@ Tinflex.setup <- function(lpdf, dlpdf, d2lpdf, ib, cT=0, rho=1.1, max.intervals=
       stop ("Cannot create squeeze. A_squeeze is not finite: A_squeeze=", A.sq.tot)
   } 
     
-  if (! is.TRUE(A.sq.tot >= 0.)) {
+  if (! isTRUE(A.sq.tot >= 0.)) {
       stop ("Cannot create squeeze. A_squeeze is not >= 0: A_squeeze=", A.sq.tot)
   } 
 
-  if (is.TRUE(A.ht.tot < A.sq.tot))
+  if (isTRUE(A.ht.tot < A.sq.tot))
       stop ("Invalid input: A_hat < A_squeeze!")
   
-  if (!is.TRUE(A.ht.tot / A.sq.tot <= rho))
+  if (!isTRUE(A.ht.tot / A.sq.tot <= rho))
       warning ("ratio A_hat / A_squeeze = ", A.ht.tot / A.sq.tot,
                " is larger than rho = ",rho)
 

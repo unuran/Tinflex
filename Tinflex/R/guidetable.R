@@ -24,9 +24,9 @@ make.guidetable.R <- function(params) {
   sum <- 0
   i <- 1
   for (j in 1:n.ivs) {
-    while (is.TRUE(Acum[i] < sum))
+    while (isTRUE(Acum[i] < sum))
       i <- i+1
-    if (is.TRUE(i > n.ivs))
+    if (isTRUE(i > n.ivs))
       break;
     gt[j] <- as.integer(i-1)   ## This is required for the C version.
     sum <- sum + Astep

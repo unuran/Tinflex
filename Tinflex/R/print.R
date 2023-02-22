@@ -58,7 +58,7 @@ Tinflex.print <- function(x, debug=FALSE, classname=NULL,...) {
   ## Print boundaries and 'c' values for initial intervals.
   cat(x$iniv,"\n")
   
-  if (is.TRUE(debug)) {
+  if (isTRUE(debug)) {
     ## Print data about for intervals.
     cat("Interval data:\n")
     print(x$ivs)
