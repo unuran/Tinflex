@@ -2,17 +2,20 @@
 
 \name{Tinflex.setup}
 \alias{Tinflex.setup}
+\alias{Tinflex.setup.C}
 
 \title{
-  Create Tinflex Generator Object 
+  Create Tinflex Generator Objects 
 }
 
 \description{
-  Create a generator object of class \code{"Tinflex"}.
+  Create a generator object of class \code{"Tinflex"} or
+  \code{"TinflexC"}.
 }
 
 \usage{
 Tinflex.setup(lpdf, dlpdf, d2lpdf, ib, cT=0, rho=1.1, max.intervals=1001)
+Tinflex.setup.C(lpdf, dlpdf, d2lpdf, ib, cT=0, rho=1.1, max.intervals=1001)
 }
 
 \arguments{
@@ -152,11 +155,17 @@ Tinflex.setup(lpdf, dlpdf, d2lpdf, ib, cT=0, rho=1.1, max.intervals=1001)
 }
 
 \value{
-  Object of class \code{"Tinflex"} that stores the random variate
+  Routine \code{Tinflex.setup} returns an 
+  object of class \code{"Tinflex"} that stores the random variate
   generator (density, hat and squeeze functions, cumulated areas below
   hat). For details see sources of the algorithm or execute
   \code{print(gen,debug=TRUE)} with an object \code{gen} of class
   \code{"Tinflex"}.
+
+  Routine \code{Tinflex.setup.C} is equivalent to \code{Tinflex.setup}
+  but does all computations entirely in C. It returns an object of class
+  \code{"TinflexC"} which is equivalent to class \code{"Tinflex"} but
+  stores all data in an C structures instead of an R list.
 }
 
 \section{Warning }{
