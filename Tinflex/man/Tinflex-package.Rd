@@ -20,8 +20,8 @@
   \tabular{ll}{
     Package: \tab Tinflex       \cr
     Type:    \tab Package       \cr
-    Version: \tab 1.8           \cr
-    Date:    \tab 2021-11-15    \cr
+    Version: \tab 1.9           \cr
+    Date:    \tab 2021-12-15    \cr
     License: \tab GPL 2 or later\cr
   }
 

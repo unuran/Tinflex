@@ -1,4 +1,9 @@
 
+Version 1.9: 2021-12-14
+
+	- internal: new directory src/scripts
+	
+
 Version 1.8: 2021-11-15
 
 	- Tinflex.setup.C():

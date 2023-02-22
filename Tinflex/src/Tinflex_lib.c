@@ -1081,7 +1081,7 @@ Tinflex_lib_sample (TINFLEX_GEN *gen, int n)
   int i;                      /* auxiliary loop variable                     */
 
   /* check arguments */
-  if (n<=0) {
+  if (n<0) {
     error("Tinflex_sample(): sample size 'n' must be positive integer"); 
   }
 
