@@ -1,4 +1,9 @@
 
+Version 1.3: 2018-06-08
+
+	- fixed invalid argument check
+	
+
 Version 1.2: 2017-06-08
 
 	- Register native routines
