@@ -74,7 +74,7 @@ Tinflex.setup <- function(lpdf, dlpdf, d2lpdf, ib, cT=0, rho=1.1, max.intervals=
 
   if (!isTRUE(max.intervals > 51)) {
     warning ("argument 'max.intervals' too small or invalid, using default")
-    rho <- 1001
+    max.intervals <- 1001
   }
 
   if (missing(lpdf) || !is.function(lpdf))
