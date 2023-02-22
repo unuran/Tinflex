@@ -7,6 +7,8 @@
 ## Load libraries -----------------------------------------------------------
 
 require(Tinflex)
+source("ftable.R")
+source("chisq.R")
 
 ## Constants ----------------------------------------------------------------
 
@@ -37,18 +39,15 @@ options(digits = 15)
 
 ## Load auxiliary libraries -------------------------------------------------
 
-if (  
-    ## Routines for testing non-uniform random variate generators.
-    require(rvgtest) &&
-    ## Function for approximate quantile function.
+if ( ## Function for approximate quantile function.
     require(Runuran) ) {
 
-  ## We have all required libraries.
-  have.UNURAN <- TRUE
+    ## We have all required libraries.
+    have.UNURAN <- TRUE
 
 } else {
-  warning("Packages 'Runuran' and 'rvgtest' needed for testing!")
-  have.UNURAN <- FALSE
+    warning("Package 'Runuran' needed for testing!")
+    have.UNURAN <- FALSE
 }
  
 ## Global variables ---------------------------------------------------------
@@ -145,7 +144,7 @@ run.test <- function(id, type, lf, dlf, d2lf, ib, cT, rho, plot=FALSE) {
         ## Set seed for tests.
         set.seed(SEED)
         
-        ## Create frequency table (using packages 'Runuran' and 'rvgtest')
+        ## Create frequency table (using packages 'Runuran')
         if (n.GoF < 1e7) {
             m <- 1
             n <- n.GoF
@@ -177,7 +176,7 @@ run.test <- function(id, type, lf, dlf, d2lf, ib, cT, rho, plot=FALSE) {
         pvals <<- append(pvals, gof$pval[m])
     }
     else {
-        ## Package 'Runuran' or 'rvgtest' is not installed.
+        ## Package 'Runuran' is not installed.
         ## Thus we only plot a histgram.
         if (plot && n.hist > 0)
             hist(Tinflex.sample(genR,n=n.hist), breaks=101, main=paste("c =",cT))

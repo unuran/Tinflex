@@ -165,7 +165,7 @@ Tinflex.setup.C(lpdf, dlpdf, d2lpdf, ib, cT=0, rho=1.1, max.intervals=1001)
   Routine \code{Tinflex.setup.C} is equivalent to \code{Tinflex.setup}
   but does all computations entirely in C. It returns an object of class
   \code{"TinflexC"} which is equivalent to class \code{"Tinflex"} but
-  stores all data in an C structures instead of an R list.
+  stores all data in an C structure instead of an R list.
 }
 
 \section{Warning }{
@@ -176,12 +176,6 @@ Tinflex.setup.C(lpdf, dlpdf, d2lpdf, ib, cT=0, rho=1.1, max.intervals=1001)
   recommended that the user inspect the generator object visually by
   means of the \code{plot} method (see \code{\link{plot.Tinflex}} for
   details).
-
-  Package \pkg{\link[rvgtest]{rvgtest}} provides a test suite for
-  non-uniform random number generators.
-  (Approximate distribution functions are available through
-  method \code{\link[Runuran]{pinv.new}} in package
-  \pkg{\link[Runuran]{Runuran}}.)
 }
 
 \author{
@@ -193,11 +187,12 @@ Tinflex.setup.C(lpdf, dlpdf, d2lpdf, ib, cT=0, rho=1.1, max.intervals=1001)
   C. Botts, W. \enc{Hörmann}{Hoermann}, and J. Leydold (2013),
   Transformed Density Rejection with Inflection Points,
   Statistics and Computing 23(2), 251--260,
-  DOI: 10.1007/s11222-011-9306-4
+  \doi{10.1007/s11222-011-9306-4}
   (see also 
   Research Report Series / Department of Statistics and Mathematics
   Nr. 110, Department of Statistics and Mathematics, WU Wien,
-  \url{http://epub.wu.ac.at/}).
+  \url{https://epub.wu.ac.at/id/eprint/3158}).
+
 }
 
 \seealso{

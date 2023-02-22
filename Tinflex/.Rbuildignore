@@ -1,2 +1,3 @@
 ^devel
 ^tests/tests.Rout.save
+^src/Makevars
