@@ -20,8 +20,8 @@
   \tabular{ll}{
     Package: \tab Tinflex       \cr
     Type:    \tab Package       \cr
-    Version: \tab 1.6           \cr
-    Date:    \tab 2019-07-06    \cr
+    Version: \tab 1.7           \cr
+    Date:    \tab 2021-02-08    \cr
     License: \tab GPL 2 or later\cr
   }
 
@@ -77,8 +77,9 @@
   There are two different implementation:
   Routine \code{\link{Tinflex.setup}} is implemented mainly in \R and
   serves (together with \code{Tinflex:::Tinflex.sample.R}) as
-  a reference implementation of published algorithm. The sampling
-  routine \code{\link{Tinflex.sample}} is then quite fast.
+  a reference implementation of the published algorithm.
+  Nevertheless, the sampling routine \code{\link{Tinflex.sample}} runs
+  quite fast.
 
   Routine \code{\link{Tinflex.setup.C}} on the other hand is implemented
   entirely in C. So it also allows to link to the underlying C code from
@@ -93,12 +94,6 @@
   recommended that the user inspect the generator object visually by
   means of the \code{plot} method (see \code{\link{plot.Tinflex}} for
   details).
-
-  Package \pkg{\link[rvgtest]{rvgtest}} provides a test suite for
-  non-uniform random number generators.
-  (Approximate distribution functions are available through
-  method \code{\link[Runuran]{pinv.new}} in package
-  \pkg{\link[Runuran]{Runuran}}.)
 }
 
 \note{
@@ -116,11 +111,11 @@
   C. Botts, W. \enc{Hörmann}{Hoermann}, and J. Leydold (2013),
   Transformed Density Rejection with Inflection Points,
   Statistics and Computing 23(2), 251--260,
-  DOI: 10.1007/s11222-011-9306-4
+  \doi{10.1007/s11222-011-9306-4}
   (see also 
   Research Report Series / Department of Statistics and Mathematics
   Nr. 110, Department of Statistics and Mathematics, WU Wien,
-  \url{http://epub.wu.ac.at/}).
+  \url{https://epub.wu.ac.at/id/eprint/3158}).
 }
 
 \seealso{

@@ -61,7 +61,7 @@ TINFLEX_GEN *Tinflex_lib_setup (TINFLEX_FUNCT *lpdf, TINFLEX_FUNCT *dlpdf, TINFL
 				double rho, int max_intervals);
 /* Setup: compute hat and squeeze for density.                               */
 
-void Tinflex_lib_free (TINFLEX_GEN *gen);
+void * Tinflex_lib_free (TINFLEX_GEN *gen);
 /* Free allocated memory.                                                    */
 
 SEXP Tinflex_lib_sample (TINFLEX_GEN *gen, int n);

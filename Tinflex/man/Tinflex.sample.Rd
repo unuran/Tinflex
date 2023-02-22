@@ -23,6 +23,12 @@ Tinflex.sample.C(gen, n=1)
   \item{n}{sample size. (integer)}
 }
 
+\details{
+  Routine \code{Tinflex.sample.C} allows objects of class
+  \code{"TinflexC"} only and thus is a bit faster than the same call
+  with routine \code{Tinflex.sample}.
+}
+
 \author{
   Josef Leydold \email{josef.leydold@wu.ac.at}, Carsten Botts and
   Wolfgang \enc{Hörmann}{Hoermann}.

@@ -987,7 +987,7 @@ int cmpiv (const void *p1, const void *p2)
 
 /*---------------------------------------------------------------------------*/
 
-void Tinflex_lib_free (TINFLEX_GEN *gen)
+void * Tinflex_lib_free (TINFLEX_GEN *gen)
 /*---------------------------------------------------------------------------*/
 /* Free allocated memory.                                                    */
 /*---------------------------------------------------------------------------*/
@@ -998,6 +998,8 @@ void Tinflex_lib_free (TINFLEX_GEN *gen)
   R_Free(gen->Acum);
   R_Free(gen->gt);
   R_Free(gen);
+
+  return (NULL);
 } /* end of Tinflex_lib_free() */
 
 /*---------------------------------------------------------------------------*/
