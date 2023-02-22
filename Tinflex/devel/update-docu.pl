@@ -62,12 +62,12 @@ my $longdate;
 my @mnames = qw( Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec );
 
 if ($increment) {
-    (my $major, my $minor, my $rev) = split (/\./, $version, 3);
-    $version = "$major.$minor.".($rev+1);
+    (my $major, my $minor) = split (/\./, $version, 2);
+    $version = "$major.".($minor+1);
 
     my $year = 1900 + (localtime(time))[5];
     my $month = sprintf("%02d", 1 + (localtime(time))[4]);
-    my $day = (localtime(time))[3];
+    my $day = sprintf("%02d", 1 + (localtime(time))[3]);
 
     $date = "$year-$month-$day";
     $longdate = "$mnames[$month-1] $day, $year";

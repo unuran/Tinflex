@@ -1,8 +1,8 @@
 Package: Tinflex
 Type: Package
 Title: A Universal Non-Uniform Random Number Generator
-Version: 1.3
-Date: 2018-06-08
+Version: 1.4
+Date: 2019-05-09
 Author: Josef Leydold, Carsten Botts and Wolfgang H\"ormann 
 Maintainer: Josef Leydold <josef.leydold@wu.ac.at>
 Imports: graphics, stats
