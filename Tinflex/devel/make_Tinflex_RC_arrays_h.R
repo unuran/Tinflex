@@ -1,17 +1,18 @@
 ##
 ## Run the following command on this file:
 ##   cd Tinflex/devel
-##   R CMD BATCH --vanilla make_Tinflex_source_h.R
+##   R CMD BATCH --vanilla make_Tinflex_RC_arrays_h.R
 
 ## load R code
 source("../R/setup.R")
 
 ## output file
-of <- "../src/Tinflex_source.h"
+of <- "../src/Tinflex_RC_arrays.h"
 
 ## file header
 cat("/*\n", file=of)
 cat(" * -- Automatically created from 'setup.R'\n", file=of, append=TRUE)
+cat(" * -- by '../devel/make_Tinflex_RC_arrays_h.R'\n", file=of, append=TRUE)
 cat(" *", date(), "\n", file=of, append=TRUE)
 cat(" */\n\n", file=of, append=TRUE)
 

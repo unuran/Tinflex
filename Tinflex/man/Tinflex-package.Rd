@@ -20,16 +20,19 @@
   \tabular{ll}{
     Package: \tab Tinflex       \cr
     Type:    \tab Package       \cr
-    Version: \tab 1.5           \cr
-    Date:    \tab 2019-05-28    \cr
+    Version: \tab 1.6           \cr
+    Date:    \tab 2019-07-06    \cr
     License: \tab GPL 2 or later\cr
   }
 
-  Package \pkg{Tinflex} serves two purposes:
+  Package \pkg{Tinflex} serves three purposes:
   \enumerate{
     \item The installed package provides a fast routine for
     sampling from any distribution that has a piecewise twice
     differentiable density function.
+
+    \item It provides C routines functions that could be used in
+    other packages (see the installed C header files).
 
     \item The \R source (including comments) presents all details of the
     general sampling method which are not entirely worked out in our
@@ -70,9 +73,19 @@
   }
 
   For further details see \code{\link{Tinflex.setup}}.
+
+  There are two different implementation:
+  Routine \code{\link{Tinflex.setup}} is implemented mainly in \R and
+  serves (together with \code{Tinflex:::Tinflex.sample.R}) as
+  a reference implementation of published algorithm. The sampling
+  routine \code{\link{Tinflex.sample}} is then quite fast.
+
+  Routine \code{\link{Tinflex.setup.C}} on the other hand is implemented
+  entirely in C. So it also allows to link to the underlying C code from
+  other packages.
 }
 
-\section{Warning }{
+\section{Warning}{
   It is very important to note that the user is responsible for the
   correctness of the supplied arguments. Since the algorithm works (in theory)
   for all distributions with piecewise twice differentiable density
