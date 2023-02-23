@@ -1,10 +1,16 @@
 # Tinflex
 
-R package for generating from quite arbitrary univariate continuous
+R package 
+[*Tinflex*](https://CRAN.R-project.org/package=Tinflex)
+for generating from quite arbitrary univariate continuous
 distributions.
 
 The package also exports its C routines for linking into into other R
 packages.
+
+The package can be installed from
+[CRAN](https://CRAN.R-project.org/package=Tinflex).
+
 
 `Tinflex` is a universal non-uniform random number generator
 based on the acceptence-rejection method for all distributions that
@@ -38,6 +44,6 @@ See `Makefile` for building and checking the package.
   Research Report Series / Department of Statistics and Mathematics
   Nr. 135, Department of Statistics and Mathematics, 
   WU Vienna University of Economics and Business,
-  <https://research.wu.ac.at/de/publications/a-generalized-transformed-density-rejection-algorithm>.
+  URL: <https://research.wu.ac.at/de/publications/a-generalized-transformed-density-rejection-algorithm>.
 
 

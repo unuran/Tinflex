@@ -44,9 +44,14 @@ check:
 
 valgrind:
 	(unset TEXINPUTS; ${R} CMD check --use-valgrind ${project}_*.tar.gz)
+	@echo -e "\n * Valgrind output ..."
+	@for Rout in `find ${project}.Rcheck/ -name *.Rout`; \
+		do echo -e "\n = $$Rout:\n"; \
+		grep -e '^==[0-9]\{3,\}== ' $$Rout; \
+	done
 
 pkg-clean:
-	@rm -rvf ${project}.Rcheck
+	@rm -rf ${project}.Rcheck
 	@rm -fv ${project}_*.tar.gz
 	@rm -fv ./${project}/src/*.o ./${project}/src/*.so ./${project}/src/symbols.rds
 
@@ -66,15 +71,14 @@ CAPI-valgrind: CAPI-build
 	@echo -e "\n * Checking package ...\n"
 	(unset TEXINPUTS; ${R} CMD check --use-valgrind test.CAPI.${project}_*.tar.gz)
 	@echo -e "\n * Valgrind output ..."
-	@for Rout in `find test.CAPI.Tinflex.Rcheck/ -name *.Rout`; \
+	@for Rout in `find test.CAPI.${project}.Rcheck/ -name *.Rout`; \
 		do echo -e "\n = $$Rout:\n"; \
 		grep -e '^==[0-9]\{3,\}== ' $$Rout; \
 	done
 
 CAPI-clean:
-	@rm -rfv test.CAPI.${project}.Rcheck
+	@rm -rf test.CAPI.${project}.Rcheck
 	@rm -fv test.CAPI.${project}_*.tar.gz
-
 
 # --- Clear working space ---------------------------------------------------
 
