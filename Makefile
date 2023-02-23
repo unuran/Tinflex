@@ -1,3 +1,8 @@
+#############################################################################
+#
+#  Makefile for building and checking R package 'Tinflex'
+#
+#############################################################################
 
 # --- Constants -------------------------------------------------------------
 
@@ -15,9 +20,14 @@ all: help
 
 help:
 	@echo ""
-	@echo "build  ... build package 'Tinflex'"
-	@echo "check  ... check package 'Tinflex'"
+	@echo "build  ... build package '${project}'"
+	@echo "check  ... check package '${project}'"
 	@echo "clean  ... clear working space"
+	@echo ""
+	@echo "valgrind ... check package '${project}' using valgrind (slow!)"
+	@echo ""
+	@echo "CAPI-check ... check C API of package '${project}'"
+	@echo "CAPI-valgrind ... check C API of package '${project}' using valgrind (slow!)"
 	@echo ""
 
 # --- Phony targets ---------------------------------------------------------
@@ -30,42 +40,48 @@ build:
 	${R} CMD build ${project}
 
 check:
-	(unset TEXINPUTS; _R_CHECK_TIMINGS_=0 ${R} CMD check --as-cran ${project}_*)
+	(unset TEXINPUTS; ${R} CMD check --as-cran ${project}_*.tar.gz)
 
-clean-Tinflex:
+valgrind:
+	(unset TEXINPUTS; ${R} CMD check --use-valgrind ${project}_*.tar.gz)
+
+pkg-clean:
 	@rm -rvf ${project}.Rcheck
 	@rm -fv ${project}_*.tar.gz
-	@rm -fv ./Tinflex/make_Tinflex_RC_arrays_h.Rout
-	@rm -fv ./Tinflex/src/*.o ./Tinflex/src/*.so 
-	@rm -fv ./Tinflex/man/*.pdf
+	@rm -fv ./${project}/src/*.o ./${project}/src/*.so ./${project}/src/symbols.rds
 
 # --- Tinflex C API test ----------------------------------------------------
 
-clean-TinflexCAPItest:
-	@rm -rvf TinflexCAPItest.Rcheck
-	@rm -fv TinflexCAPItest_*.tar.gz
-	@rm -fv ./TinflexCAPItest/src/*.o ./TinflexCAPItest/src/*.so 
-	@rm -fv ./TinflexCAPItest/man/*.pdf
+CAPI-build:
+	@echo -e "\n * Checking C API of package '${project}'!\n"
+	@echo "Ensure that package '${project}' is installed!" | sed 'h;s/./=/g;p;x;p;x'
+	@echo -e "\n * Building package ...\n"
+	${R} CMD build test_CAPI_${project}
 
-build-TinflexCAPItest:
-	${R} CMD build TinflexCAPItest
+CAPI-check: CAPI-build
+	@echo -e "\n * Checking package ...\n"
+	(unset TEXINPUTS; ${R} CMD check test.CAPI.${project}_*.tar.gz)
 
-check-TinflexCAPItest:
-	(unset TEXINPUTS; _R_CHECK_TIMINGS_=0 ${R} CMD check TinflexCAPItest_*)
+CAPI-valgrind: CAPI-build
+	@echo -e "\n * Checking package ...\n"
+	(unset TEXINPUTS; ${R} CMD check --use-valgrind test.CAPI.${project}_*.tar.gz)
+	@echo -e "\n * Valgrind output ..."
+	@for Rout in `find test.CAPI.Tinflex.Rcheck/ -name *.Rout`; \
+		do echo -e "\n = $$Rout:\n"; \
+		grep -e '^==[0-9]\{3,\}== ' $$Rout; \
+	done
+
+CAPI-clean:
+	@rm -rfv test.CAPI.${project}.Rcheck
+	@rm -fv test.CAPI.${project}_*.tar.gz
 
 
 # --- Clear working space ---------------------------------------------------
 
 clean:
-	@make clean-Tinflex
-	@make clean-TinflexCAPItest
+	@make pkg-clean
+	@make CAPI-clean
 	@find -L . -type f -name "*~" -exec rm -v {} ';'
-
-	@rm -fv ./Tinflex-log/tests-Tinflex-log.Rout
-	@rm -fv ./Tinflex-log/Rplots.pdf
-
-	@(cd examples && make clean)
-	@(cd experiments && make clean)
 
 maintainer-clean: clean
 
