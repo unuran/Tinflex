@@ -1,0 +1,15 @@
+Package: test.CAPI.Tinflex
+Type: Package
+Title: Test Tinflex C API
+Version: 0.1
+Date: 2019-07-09
+Author: Josef Leydold
+Maintainer: Josef Leydold <josef.leydold@wu.ac.at>
+Imports:
+   Tinflex (>= 1.6)
+Suggests:
+   Runuran, rvgtest
+LinkingTo:
+   Tinflex
+Description: Test Tinflex C API.
+License: GPL (>= 2)

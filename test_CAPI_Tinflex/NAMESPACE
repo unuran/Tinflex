@@ -1,0 +1,5 @@
+
+useDynLib(test.CAPI.Tinflex, .registration=TRUE, .fixes="C_")
+
+import(Tinflex)
+export(rdist.setup)
