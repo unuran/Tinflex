@@ -3,12 +3,19 @@
 R package for generating from quite arbitrary univariate continuous
 distributions.
 
+The package also exports its C routines for linking into into other R
+packages.
+
 `Tinflex` is a universal non-uniform random number generator
 based on the acceptence-rejection method for all distributions that
 have a piecewise twice differentiable density function.
 Required input includes the log-density function of
 the target distribution and its first and (optionally) second
 derivatives.
+
+## Build and check
+
+See `Makefile` for building and checking the package.
 
 ## References
 
