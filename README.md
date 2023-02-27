@@ -1,4 +1,4 @@
-# Tinflex
+# Tinflex (CRAN Package)
 
 R package 
 [*Tinflex*](https://CRAN.R-project.org/package=Tinflex)
