@@ -181,8 +181,8 @@ void rdist_free (SEXP sexp_gen)
 
   static void * (*free_func)(TINFLEX_GEN *) = NULL;
   if (free_func == NULL)
-    free_func = R_GetCCallable("Tinflex", "Tinflex_lib_free");
-  
+    free_func = (void * (*)(TINFLEX_GEN *)) R_GetCCallable("Tinflex", "Tinflex_lib_free");
+
   gen = R_ExternalPtrAddr(sexp_gen);
   free_func (gen);
   R_ClearExternalPtr(sexp_gen);
