@@ -3,7 +3,12 @@ Type: Package
 Title: A Universal Non-Uniform Random Number Generator
 Version: 2.4
 Date: 2023-03-21
-Author: Josef Leydold, Carsten Botts and Wolfgang H\"ormann 
+Authors@R: c(person("Josef", "Leydold",
+                    role = c("aut", "cre"),
+                    email = "josef.leydold@wu.ac.at",
+                    comment = c(ORCID = "0000-0002-9076-4893")),
+             person("Carsten", "Botts", role = "aut"),
+             person("Wolfgang", "H\"ormann", role = "aut"))
 Maintainer: Josef Leydold <josef.leydold@wu.ac.at>
 Imports: graphics, methods, stats
 Suggests: Runuran
@@ -11,3 +16,4 @@ Description: A universal non-uniform random number generator
   for quite arbitrary distributions with piecewise twice
   differentiable densities.
 License: GPL (>= 2)
+URL: https://github.com/unuran/Tinflex
